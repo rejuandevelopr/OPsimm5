@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator PSIM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap');
+
+        /* Navbar Start */
+        .navbar{
+            background-color: white !important;
+        }
+        form{
+            background-color: #f9f9f9;
+            width: 460px;
+            height: 48px;
+            align-items: center;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 5px;
+        }
+        form button{
+            border: 0;
+            background-color: #f9f9f9;
+            margin-top: 4px;
+        }
+        form button i{
+            font-size: 20px;
+        }
+        form input{
+            background-color: #f9f9f9 !important;
+            border: 0 !important;
+        }
+        .form-control:focus{
+            box-shadow: none;
+        }
+        .in_responsive{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        
+        /* User Start */
+        .userhead_main{
+            display: flex;
+        }
+        .userpart_two{
+            padding-top: 10px;
+            padding-bottom: 20px;
+        }
+        .user_head{
+            width: 64.5%;
+            background-color: rgba(0, 152, 244, 1);
+            display: inline-block;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .user_head h2{
+            padding-top: 5px;
+        }
+        
+        
+        .user_btn{
+            display: flex;
+        }
+        .user_btn button{
+            padding-left: 38px;
+            padding-right: 35px;
+            padding-top: 18px;
+            padding-bottom: 18px;
+            background-color: #fff;
+            border: 1px solid rgba(80, 205, 137, 1);
+            color: black;
+            display: flex;
+            align-items: center;
+        }
+        .user_btn button i{
+            margin-right: 6px;
+        }
+        .user_btn button:hover{
+            border-color: rgba(80, 205, 137, 1);
+            background-color: #d5d1d1;
+            color: black;
+        }
+        .user_btn button:first-child{
+            margin-left: 19px;
+            margin-right: 15px;
+        }
+        .user_btn button:nth-child(2){
+            margin-right: 15px;
+        }
+        
+        
+        .user_head h2{
+            font-family: Lato;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 20px;
+            letter-spacing: 0em;
+            text-align: start;
+            color: #fff;
+            padding-left: 20px;
+        }
+
+        /* Table */
+        .table .col-lg-3{
+            padding: 0 !important;
+        }
+        .table .col-lg-4{
+            padding: 0 !important;
+        }
+        .table .col-lg-5{
+            padding: 0 !important;
+        }
+        
+        
+        th{
+            border-left: 1px solid rgba(0, 0, 0, 0.42);
+            border-top: 1px solid rgba(0, 0, 0, 0.42);
+            border-bottom: 0;
+            background-color: rgba(0, 152, 244, 1) !important;
+            color: white !important;
+            font-family: Lato;
+            font-size: 20px !important;
+            font-weight: 200 !important;
+            line-height: 24px !important ;
+            letter-spacing: 0em !important;
+            text-align: center !important;
+            padding-top: 20px !important;
+            padding-bottom: 18px !important;
+        }
+        td{
+            border-bottom: 0;
+            border-left: 1px solid rgba(0, 0, 0, 0.42);
+            text-align: center;
+            height: 70px !important;
+            align-items: center !important;
+            padding-top: 22px !important;
+        }
+
+        /* Modal */
+        .modal-body{
+          padding: 20px 26px;
+        }
+        .modal-body div input{
+          padding-top: 14px;
+          padding-bottom: 10px;
+          padding-left: 20px;
+        }
+        
+        
+        /* Modal */
+        .modal-header h1{
+          font-family: Lato;
+          font-size: 24px;
+          font-weight: 600;
+          /* line-height: 20px; */
+          text-align: center;
+        }
+
+        .modal-dialog{
+            max-width: 1100px;
+        }
+        .modal-header{
+            background-color: rgba(0, 152, 244, 1);
+            color: white;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        /* CU Btn */
+.cu_btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cu_btn .btn{
+   padding: 14px 50px 14px 50px;
+   background-color: white;
+   border-color: rgba(70, 66, 66, 0.42);
+   color: black;
+}
+.cu_btn .btn:hover{
+    background-color: rgba(0, 152, 244, 1);
+    border-color: rgba(0, 152, 244, 1);
+    color: white;
+}
+.cu_btn .btn:first-child{
+    margin-right: 8px;
+}
+.cu_btn .btn:last-child{
+    margin-left: 8px;
+}
+.dataholder{
+    cursor: pointer;
+}
+
+
+
+        
+
+        @media screen and (max-width:992px) {
+          .in_responsive{
+          padding: auto;
+        }
+        .in_responsive_main{
+          display: flex;
+          justify-content: center;
+        }
+
+        form{
+            background-color: #f9f9f9;
+            width: 100%;
+          }
+
+          /* User */
+          .user_btn{
+            display: flex;
+            flex-direction: column;
+            
+        }
+        .userhead_main{
+            display: flex;
+            flex-direction: column;
+        }
+        .user_head{
+            width: 100%;
+            background-color: rgba(0, 152, 244, 1);
+            display: inline-block;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5px;
+            padding-bottom: 1px;
+        }
+        .user_btn button{
+            width: 100%;
+            justify-content: center;
+        }
+        .user_btn button:first-child{
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        .user_btn button:nth-child(2){
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
+        /* Table */
+        .r_border{
+            border-right: 1px solid rgba(0, 0, 0, 0.42);
+          }
+          .footer_main{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .modal_picture{
+          text-align: center;
+          margin-bottom: 14px;
+        }
+        }
+
+        @media screen and (max-width:576px) {
+          .user_head{
+            display: flex;
+            flex-direction: column;
+          }
+          
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Nav Start -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img height="61" width="154" src="https://i.ibb.co/DQ2c8nr/image-3.png" alt="Brand_logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <form class="d-flex" role="search">
+            <button><i class="fa-solid fa-magnifying-glass" style="color: #868686;"></i></button>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        </form>
+        </ul>
+
+        <div class="d-flex justify-contents-center in_responsive_main">
+            <div class="in_responsive">
+                <span style="font-size: 20px; display: inline-block;">Khairul Nizam</span>
+                <span style="font-size: 14px; display: inline-block;">Administrator</span>
+            </div>
+            <div class="ms-4">
+                <img clas="img-fluid" height="50" width="50" src="https://i.ibb.co/HYSg8v2/Ellipse-36.png" alt="Ellipse">
+            </div>
+        </div>
+        
+      </div>
+    </div>
+  </nav>
+  <!-- Nav end -->
+
+  <section class="userpart_two">
+    <div class="container">
+        <div class="userhead_main">
+            <div class="user_head">
+                <h2 class="text-start">Cardholder Viewlist</h2>
+            </div>
+            <div class="user_btn">
+                <button class="btn btn-primary" ><i class="fa-light fa-plus fa-xl" style="color: #707070;"></i> Filter</button>
+                <button class="btn btn-primary" ><i class="fa-light fa-plus fa-xl" style="color: #707070;"></i> Reset</button>
+                <button class="btn btn-primary" ><i class="fa-light fa-plus fa-xl" style="color: #707070;"></i> Export</button>
+            </div>
+        </div>
+    </div>
+  </section>
+
+
+  <!-- Table Section -->
+  <section class="table mt-3">
+    <div class="container">
+        <div class="row gx-0">
+            <div class="col-lg-5">
+                <table class="table">
+                    <thead>
+                      <tr >
+                        <th>ID</th>
+                        <th>Full Name</th>
+                        <th class="r_border">NRIC</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span>1</span></td>
+                        <td><span>Khairul Nizam</span></td>
+                        <td class="r_border"><span>880816235540</span></td>
+                      </tr>
+                      <tr>
+                        <td style="background-color: rgba(248, 245, 255, 1);"><span>2</span></td>
+                        <td style="background-color: rgba(248, 245, 255, 1);"><span>Muhammad Hakimi</span></td>
+                        <td class="r_border" style="background-color: rgba(248, 245, 255, 1);"><span>880816235540</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>3</span></td>
+                        <td><span>Muhammad Fauzan</span></td>
+                        <td class="r_border"><span>880816235540</span></td>
+                      </tr>
+                      <tr>
+                        <td style="background-color: rgba(248, 245, 255, 1);"><span>4</span></td>
+                        <td style="background-color: rgba(248, 245, 255, 1);"><span>Kelvin</span></td>
+                        <td class="r_border" style="background-color: rgba(248, 245, 255, 1);"><span>880816235540</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>5</span></td>
+                        <td><span>Natasha</span></td>
+                        <td class="r_border"><span>880816235540</span></td>
+                      </tr>
+                      <tr>
+                        <td style="background-color: rgba(248, 245, 255, 1);"><span>6</span></td>
+                        <td style="background-color: rgba(248, 245, 255, 1);"><span>Cristina</span></td>
+                        <td class="r_border" style="background-color: rgba(248, 245, 255, 1);"><span>880816235540</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>7</span></td>
+                        <td><span>Khairul Nizam</span></td>
+                        <td class="r_border"><span>880816235540</span></td>
+                      </tr>
+                           
+                      <tr>
+                        <td style="background-color: rgba(248, 245, 255, 1); border-bottom: 1px solid rgba(0, 0, 0, 0.42);"><span>8</span></td>
+                        <td style="background-color: rgba(248, 245, 255, 1); border-bottom: 1px solid rgba(0, 0, 0, 0.42);"><span>Khairul Nizam</span></td>
+                        <td class="r_border" style="background-color: rgba(248, 245, 255, 1); border-bottom: 1px solid rgba(0, 0, 0, 0.42);"><span>880816235540</span></td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Expiration Date</th>
+                        <th>Card ID</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="padding-top: 10px !important;"><span>05/01/2022</span><br><span>11:11:11 AM</span></td>
+                       
+                        <td class="r_border"><span>1234567890</span></td>
+                      </tr>
+                      <tr>
+                        <td style="padding-top: 10px !important; background-color: rgba(248, 245, 255, 1);"><span>05/01/2022</span><br><span>11:11:11 AM</span></td>
+                        
+                        <td class="r_border" style="background-color: rgba(248, 245, 255, 1);"><span>1234567890</span></td>
+                      </tr>
+                      <tr>
+                        <td style="padding-top: 10px !important;"><span>05/01/2022</span><br><span>11:11:11 AM</span></td>
+                        
+                        <td class="r_border"><span>1234567890</span></td>
+                      </tr>
+                      <tr>
+                        <td style="padding-top: 10px !important; background-color: rgba(248, 245, 255, 1);"><span>05/01/2022</span><br><span>11:11:11 AM</span></td>
+                        
+                        <td class="r_border" style="background-color: rgba(248, 245, 255, 1);"><span>1234567890</span></td>
+                      </tr>
+                      <tr>
+                        <td style="padding-top: 10px !important;"><span>05/01/2022</span><br><span>11:11:11 AM</span></td>
+                        
+                        <td class="r_border"><span>1234567890</span></td>
+                      </tr>
+                      <tr>
+                        <td style="padding-top: 10px !important; background-color: rgba(248, 245, 255, 1);"><span>05/01/2022</span><br><span>11:11:11 AM</span></td>
+                        
+                        <td class="r_border" style="background-color: rgba(248, 245, 255, 1);"><span>1234567890</span></td>
+                      </tr>
+                      <tr>
+                        <td style="padding-top: 10px !important;"><span>05/01/2022</span><br><span>11:11:11 AM</span></td>
+                        
+                        <td class="r_border"><span>1234567890</span></td>
+                      </tr>
+                      
+                      <tr>
+                        <td style="padding-top: 10px !important; background-color: rgba(248, 245, 255, 1); border-bottom: 1px solid rgba(0, 0, 0, 0.42);"><span>05/01/2022</span><br><span>11:11:11 AM</span></td>
+                        
+                        <td class="r_border" style="background-color: rgba(248, 245, 255, 1); border-bottom: 1px solid rgba(0, 0, 0, 0.42);"><span>1234567890</span></td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-3">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Card Version</th>
+                        <th class="r_border" style="border-right: 1px solid rgba(0, 0, 0, 0.42);">Details</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td >1</td>
+                        <td  class="r_border" style="border-right: 1px solid rgba(0, 0, 0, 0.42);"><span class="dataholder" data-bs-toggle="modal" data-bs-target="#exampleModal"><svg width="33" height="28" viewBox="0 0 33 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M27.5 25.9728L30.8688 28L29.975 24.1769L33 21.619L29.0263 21.2789L27.5 17.6871L25.9463 21.2789L22 21.619L24.9975 24.1769L24.0625 28L27.5 25.9728ZM19.36 24.4898H2.75C2.02871 24.4648 1.34385 24.17 0.833504 23.6651C0.323163 23.1601 0.0253075 22.4824 0 21.7687L0 2.72109C0.055 1.2381 1.25125 0.0544218 2.75 0H30.25C31.7488 0.0544218 32.945 1.2381 33 2.72109V17.0476C32.2025 16.3265 31.2812 15.7959 30.25 15.4286V2.72109H2.75V21.7687H19.36C19.2913 22.2177 19.25 22.6667 19.25 23.1293C19.25 23.5918 19.2913 24.0544 19.36 24.4898ZM19.25 19.0476H5.5V17.3469C5.5 15.0884 10.0925 13.9456 12.375 13.9456C14.6575 13.9456 19.25 15.0884 19.25 17.3469V19.0476ZM19.25 10.8844H24.75V12.2449H19.25V10.8844ZM12.375 5.44218C10.4913 5.44218 8.9375 6.97959 8.9375 8.84354C8.9375 10.7075 10.4913 12.2449 12.375 12.2449C14.2587 12.2449 15.8125 10.7075 15.8125 8.84354C15.8125 6.97959 14.2587 5.44218 12.375 5.44218ZM19.25 8.16327H27.5V9.52381H19.25V8.16327ZM19.25 5.44218H27.5V6.80272H19.25V5.44218Z" fill="black" fill-opacity="0.43"/>
+                            </svg></span></td>
+                      </tr>
+                      <tr>
+                        <td style="background-color: rgba(248, 245, 255, 1);"><span>1</span></td>
+                        <td class="r_border" style="border-right: 1px solid rgba(0, 0, 0, 0.42);background-color: rgba(248, 245, 255, 1);"><span class="dataholder" data-bs-toggle="modal" data-bs-target="#exampleModal"><svg width="33" height="28" viewBox="0 0 33 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M27.5 25.9728L30.8688 28L29.975 24.1769L33 21.619L29.0263 21.2789L27.5 17.6871L25.9463 21.2789L22 21.619L24.9975 24.1769L24.0625 28L27.5 25.9728ZM19.36 24.4898H2.75C2.02871 24.4648 1.34385 24.17 0.833504 23.6651C0.323163 23.1601 0.0253075 22.4824 0 21.7687L0 2.72109C0.055 1.2381 1.25125 0.0544218 2.75 0H30.25C31.7488 0.0544218 32.945 1.2381 33 2.72109V17.0476C32.2025 16.3265 31.2812 15.7959 30.25 15.4286V2.72109H2.75V21.7687H19.36C19.2913 22.2177 19.25 22.6667 19.25 23.1293C19.25 23.5918 19.2913 24.0544 19.36 24.4898ZM19.25 19.0476H5.5V17.3469C5.5 15.0884 10.0925 13.9456 12.375 13.9456C14.6575 13.9456 19.25 15.0884 19.25 17.3469V19.0476ZM19.25 10.8844H24.75V12.2449H19.25V10.8844ZM12.375 5.44218C10.4913 5.44218 8.9375 6.97959 8.9375 8.84354C8.9375 10.7075 10.4913 12.2449 12.375 12.2449C14.2587 12.2449 15.8125 10.7075 15.8125 8.84354C15.8125 6.97959 14.2587 5.44218 12.375 5.44218ZM19.25 8.16327H27.5V9.52381H19.25V8.16327ZM19.25 5.44218H27.5V6.80272H19.25V5.44218Z" fill="black" fill-opacity="0.43"/>
+                            </svg></span></td>
+                      </tr>
+                      <tr>
+                        <td >1</td>
+                        <td class="r_border" style="border-right: 1px solid rgba(0, 0, 0, 0.42);"><span class="dataholder" data-bs-toggle="modal" data-bs-target="#exampleModal"><svg width="33" height="28" viewBox="0 0 33 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M27.5 25.9728L30.8688 28L29.975 24.1769L33 21.619L29.0263 21.2789L27.5 17.6871L25.9463 21.2789L22 21.619L24.9975 24.1769L24.0625 28L27.5 25.9728ZM19.36 24.4898H2.75C2.02871 24.4648 1.34385 24.17 0.833504 23.6651C0.323163 23.1601 0.0253075 22.4824 0 21.7687L0 2.72109C0.055 1.2381 1.25125 0.0544218 2.75 0H30.25C31.7488 0.0544218 32.945 1.2381 33 2.72109V17.0476C32.2025 16.3265 31.2812 15.7959 30.25 15.4286V2.72109H2.75V21.7687H19.36C19.2913 22.2177 19.25 22.6667 19.25 23.1293C19.25 23.5918 19.2913 24.0544 19.36 24.4898ZM19.25 19.0476H5.5V17.3469C5.5 15.0884 10.0925 13.9456 12.375 13.9456C14.6575 13.9456 19.25 15.0884 19.25 17.3469V19.0476ZM19.25 10.8844H24.75V12.2449H19.25V10.8844ZM12.375 5.44218C10.4913 5.44218 8.9375 6.97959 8.9375 8.84354C8.9375 10.7075 10.4913 12.2449 12.375 12.2449C14.2587 12.2449 15.8125 10.7075 15.8125 8.84354C15.8125 6.97959 14.2587 5.44218 12.375 5.44218ZM19.25 8.16327H27.5V9.52381H19.25V8.16327ZM19.25 5.44218H27.5V6.80272H19.25V5.44218Z" fill="black" fill-opacity="0.43"/>
+                            </svg></span></td>
+                      </tr>
+                      <tr>
+                        <td style="background-color: rgba(248, 245, 255, 1);"><span>1</span></td>
+                        <td class="r_border" style="border-right: 1px solid rgba(0, 0, 0, 0.42);background-color: rgba(248, 245, 255, 1);"><span class="dataholder" data-bs-toggle="modal" data-bs-target="#exampleModal"><svg width="33" height="28" viewBox="0 0 33 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M27.5 25.9728L30.8688 28L29.975 24.1769L33 21.619L29.0263 21.2789L27.5 17.6871L25.9463 21.2789L22 21.619L24.9975 24.1769L24.0625 28L27.5 25.9728ZM19.36 24.4898H2.75C2.02871 24.4648 1.34385 24.17 0.833504 23.6651C0.323163 23.1601 0.0253075 22.4824 0 21.7687L0 2.72109C0.055 1.2381 1.25125 0.0544218 2.75 0H30.25C31.7488 0.0544218 32.945 1.2381 33 2.72109V17.0476C32.2025 16.3265 31.2812 15.7959 30.25 15.4286V2.72109H2.75V21.7687H19.36C19.2913 22.2177 19.25 22.6667 19.25 23.1293C19.25 23.5918 19.2913 24.0544 19.36 24.4898ZM19.25 19.0476H5.5V17.3469C5.5 15.0884 10.0925 13.9456 12.375 13.9456C14.6575 13.9456 19.25 15.0884 19.25 17.3469V19.0476ZM19.25 10.8844H24.75V12.2449H19.25V10.8844ZM12.375 5.44218C10.4913 5.44218 8.9375 6.97959 8.9375 8.84354C8.9375 10.7075 10.4913 12.2449 12.375 12.2449C14.2587 12.2449 15.8125 10.7075 15.8125 8.84354C15.8125 6.97959 14.2587 5.44218 12.375 5.44218ZM19.25 8.16327H27.5V9.52381H19.25V8.16327ZM19.25 5.44218H27.5V6.80272H19.25V5.44218Z" fill="black" fill-opacity="0.43"/>
+                            </svg></span></td>
+                      </tr>
+                      <tr>
+                        <td >1</td>
+                        <td class="r_border" style="border-right: 1px solid rgba(0, 0, 0, 0.42);"><span class="dataholder" data-bs-toggle="modal" data-bs-target="#exampleModal"><svg width="33" height="28" viewBox="0 0 33 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M27.5 25.9728L30.8688 28L29.975 24.1769L33 21.619L29.0263 21.2789L27.5 17.6871L25.9463 21.2789L22 21.619L24.9975 24.1769L24.0625 28L27.5 25.9728ZM19.36 24.4898H2.75C2.02871 24.4648 1.34385 24.17 0.833504 23.6651C0.323163 23.1601 0.0253075 22.4824 0 21.7687L0 2.72109C0.055 1.2381 1.25125 0.0544218 2.75 0H30.25C31.7488 0.0544218 32.945 1.2381 33 2.72109V17.0476C32.2025 16.3265 31.2812 15.7959 30.25 15.4286V2.72109H2.75V21.7687H19.36C19.2913 22.2177 19.25 22.6667 19.25 23.1293C19.25 23.5918 19.2913 24.0544 19.36 24.4898ZM19.25 19.0476H5.5V17.3469C5.5 15.0884 10.0925 13.9456 12.375 13.9456C14.6575 13.9456 19.25 15.0884 19.25 17.3469V19.0476ZM19.25 10.8844H24.75V12.2449H19.25V10.8844ZM12.375 5.44218C10.4913 5.44218 8.9375 6.97959 8.9375 8.84354C8.9375 10.7075 10.4913 12.2449 12.375 12.2449C14.2587 12.2449 15.8125 10.7075 15.8125 8.84354C15.8125 6.97959 14.2587 5.44218 12.375 5.44218ZM19.25 8.16327H27.5V9.52381H19.25V8.16327ZM19.25 5.44218H27.5V6.80272H19.25V5.44218Z" fill="black" fill-opacity="0.43"/>
+                            </svg></span></td>
+                      </tr>
+                      <tr>
+                        <td style="background-color: rgba(248, 245, 255, 1);"><span>1</span></td>
+                        <td class="r_border" style="border-right: 1px solid rgba(0, 0, 0, 0.42);background-color: rgba(248, 245, 255, 1);"><span class="dataholder" data-bs-toggle="modal" data-bs-target="#exampleModal"><svg width="33" height="28" viewBox="0 0 33 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M27.5 25.9728L30.8688 28L29.975 24.1769L33 21.619L29.0263 21.2789L27.5 17.6871L25.9463 21.2789L22 21.619L24.9975 24.1769L24.0625 28L27.5 25.9728ZM19.36 24.4898H2.75C2.02871 24.4648 1.34385 24.17 0.833504 23.6651C0.323163 23.1601 0.0253075 22.4824 0 21.7687L0 2.72109C0.055 1.2381 1.25125 0.0544218 2.75 0H30.25C31.7488 0.0544218 32.945 1.2381 33 2.72109V17.0476C32.2025 16.3265 31.2812 15.7959 30.25 15.4286V2.72109H2.75V21.7687H19.36C19.2913 22.2177 19.25 22.6667 19.25 23.1293C19.25 23.5918 19.2913 24.0544 19.36 24.4898ZM19.25 19.0476H5.5V17.3469C5.5 15.0884 10.0925 13.9456 12.375 13.9456C14.6575 13.9456 19.25 15.0884 19.25 17.3469V19.0476ZM19.25 10.8844H24.75V12.2449H19.25V10.8844ZM12.375 5.44218C10.4913 5.44218 8.9375 6.97959 8.9375 8.84354C8.9375 10.7075 10.4913 12.2449 12.375 12.2449C14.2587 12.2449 15.8125 10.7075 15.8125 8.84354C15.8125 6.97959 14.2587 5.44218 12.375 5.44218ZM19.25 8.16327H27.5V9.52381H19.25V8.16327ZM19.25 5.44218H27.5V6.80272H19.25V5.44218Z" fill="black" fill-opacity="0.43"/>
+                            </svg></span></td>
+                      </tr>
+                      <tr>
+                        <td >1</td>
+                        <td class="r_border" style="border-right: 1px solid rgba(0, 0, 0, 0.42);"><span class="dataholder" data-bs-toggle="modal" data-bs-target="#exampleModal"><svg width="33" height="28" viewBox="0 0 33 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M27.5 25.9728L30.8688 28L29.975 24.1769L33 21.619L29.0263 21.2789L27.5 17.6871L25.9463 21.2789L22 21.619L24.9975 24.1769L24.0625 28L27.5 25.9728ZM19.36 24.4898H2.75C2.02871 24.4648 1.34385 24.17 0.833504 23.6651C0.323163 23.1601 0.0253075 22.4824 0 21.7687L0 2.72109C0.055 1.2381 1.25125 0.0544218 2.75 0H30.25C31.7488 0.0544218 32.945 1.2381 33 2.72109V17.0476C32.2025 16.3265 31.2812 15.7959 30.25 15.4286V2.72109H2.75V21.7687H19.36C19.2913 22.2177 19.25 22.6667 19.25 23.1293C19.25 23.5918 19.2913 24.0544 19.36 24.4898ZM19.25 19.0476H5.5V17.3469C5.5 15.0884 10.0925 13.9456 12.375 13.9456C14.6575 13.9456 19.25 15.0884 19.25 17.3469V19.0476ZM19.25 10.8844H24.75V12.2449H19.25V10.8844ZM12.375 5.44218C10.4913 5.44218 8.9375 6.97959 8.9375 8.84354C8.9375 10.7075 10.4913 12.2449 12.375 12.2449C14.2587 12.2449 15.8125 10.7075 15.8125 8.84354C15.8125 6.97959 14.2587 5.44218 12.375 5.44218ZM19.25 8.16327H27.5V9.52381H19.25V8.16327ZM19.25 5.44218H27.5V6.80272H19.25V5.44218Z" fill="black" fill-opacity="0.43"/>
+                            </svg></span></td>
+                      </tr>
+                      <tr>
+                        <td style="background-color: rgba(248, 245, 255, 1);border-bottom: 1px solid rgba(0, 0, 0, 0.42);"><span >1</span></td>
+                        <td class="r_border" style="border-right: 1px solid rgba(0, 0, 0, 0.42);background-color: rgba(248, 245, 255, 1);border-bottom: 1px solid rgba(0, 0, 0, 0.42);"><span class="dataholder" data-bs-toggle="modal" data-bs-target="#exampleModal"><svg width="33" height="28" viewBox="0 0 33 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M27.5 25.9728L30.8688 28L29.975 24.1769L33 21.619L29.0263 21.2789L27.5 17.6871L25.9463 21.2789L22 21.619L24.9975 24.1769L24.0625 28L27.5 25.9728ZM19.36 24.4898H2.75C2.02871 24.4648 1.34385 24.17 0.833504 23.6651C0.323163 23.1601 0.0253075 22.4824 0 21.7687L0 2.72109C0.055 1.2381 1.25125 0.0544218 2.75 0H30.25C31.7488 0.0544218 32.945 1.2381 33 2.72109V17.0476C32.2025 16.3265 31.2812 15.7959 30.25 15.4286V2.72109H2.75V21.7687H19.36C19.2913 22.2177 19.25 22.6667 19.25 23.1293C19.25 23.5918 19.2913 24.0544 19.36 24.4898ZM19.25 19.0476H5.5V17.3469C5.5 15.0884 10.0925 13.9456 12.375 13.9456C14.6575 13.9456 19.25 15.0884 19.25 17.3469V19.0476ZM19.25 10.8844H24.75V12.2449H19.25V10.8844ZM12.375 5.44218C10.4913 5.44218 8.9375 6.97959 8.9375 8.84354C8.9375 10.7075 10.4913 12.2449 12.375 12.2449C14.2587 12.2449 15.8125 10.7075 15.8125 8.84354C15.8125 6.97959 14.2587 5.44218 12.375 5.44218ZM19.25 8.16327H27.5V9.52381H19.25V8.16327ZM19.25 5.44218H27.5V6.80272H19.25V5.44218Z" fill="black" fill-opacity="0.43"/>
+                            </svg></span></td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Cardholder Details</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-2 modal_picture">
+                    <img class="img-fluid" src="https://i.ibb.co/ZWQRYkg/Rectangle-914.png" alt="Modal_Picture">
+                </div>
+                <div class="col-md-5">
+                    <table class="table">
+                        <tbody>
+                          
+                          <tr>
+                            <td style="background-color: rgba(248, 245, 255, 1); border-top: 1px solid rgba(0, 0, 0, 0.42);"><span>System ID</span></td>
+                            <td style="background-color: rgba(248, 245, 255, 1); border-top: 1px solid rgba(0, 0, 0, 0.42);"><span>:</span></td>
+                            <td class="r_border" style="background-color: rgba(248, 245, 255, 1); border-right: 1px solid rgba(0, 0, 0, 0.42);border-top: 1px solid rgba(0, 0, 0, 0.42);"><span>12345</span></td>
+                          </tr>
+                          <tr>
+                            <td><span>Creation Owner</span></td>
+                            <td><span>:</span></td>
+                            <td style="border-right: 1px solid rgba(0, 0, 0, 0.42);" class="r_border"><span>DBCDEB</span></td>
+                          </tr>
+                          <tr>
+                            <td style="background-color: rgba(248, 245, 255, 1);"><span>Facility Code</span></td>
+                            <td style="background-color: rgba(248, 245, 255, 1);"><span>:</span></td>
+                            <td class="r_border" style="background-color: rgba(248, 245, 255, 1); border-right: 1px solid rgba(0, 0, 0, 0.42);"><span>0</span></td>
+                          </tr>
+                          <tr>
+                            <td><span>Blacklist Status</span></td>
+                            <td><span>:</span></td>
+                            <td style="border-right: 1px solid rgba(0, 0, 0, 0.42);" class="r_border"><span>TRUE</span></td>
+                          </tr>
+                          <tr>
+                            <td style="background-color: rgba(248, 245, 255, 1);"><span>Card ID</span></td>
+                            <td style="background-color: rgba(248, 245, 255, 1);"><span>:</span></td>
+                            <td class="r_border" style="background-color: rgba(248, 245, 255, 1); border-right: 1px solid rgba(0, 0, 0, 0.42);"><span>T0100111</span></td>
+                          </tr>
+                          <tr>
+                            <td><span>User Name</span></td>
+                            <td><span>:</span></td>
+                            <td style="border-right: 1px solid rgba(0, 0, 0, 0.42);" class="r_border"><span>CONVERTED 1</span></td>
+                          </tr>
+                          <tr>
+                            <td style="background-color: rgba(248, 245, 255, 1);"><span>PIN Number</span></td>
+                            <td style="background-color: rgba(248, 245, 255, 1);"><span>:</span></td>
+                            <td class="r_border" style="background-color: rgba(248, 245, 255, 1); border-right: 1px solid rgba(0, 0, 0, 0.42);"><span>0</span></td>
+                          </tr>
+                          <tr>
+                            <td style="border-bottom: 1px solid rgba(0, 0, 0, 0.42);"><span>NIRC</span></td>
+                            <td style="border-bottom: 1px solid rgba(0, 0, 0, 0.42);"><span>:</span></td>
+                            <td style="border-right: 1px solid rgba(0, 0, 0, 0.42); border-bottom: 1px solid rgba(0, 0, 0, 0.42);" class="r_border"><span>0</span></td>
+                          </tr>
+                          
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="col-md-5">
+                    <table class="table">
+                        <tbody>
+                          
+                          <tr>
+                            <td style="background-color: rgba(248, 245, 255, 1); border-top: 1px solid rgba(0, 0, 0, 0.42);"><span>CAN Number</span></td>
+                            <td style="background-color: rgba(248, 245, 255, 1); border-top: 1px solid rgba(0, 0, 0, 0.42);"><span>:</span></td>
+                            <td class="r_border" style="background-color: rgba(248, 245, 255, 1); border-right: 1px solid rgba(0, 0, 0, 0.42);border-top: 1px solid rgba(0, 0, 0, 0.42);"><span>-</span></td>
+                          </tr>
+                          <tr>
+                            <td><span>Serial Number</span></td>
+                            <td><span>:</span></td>
+                            <td style="border-right: 1px solid rgba(0, 0, 0, 0.42);" class="r_border"><span>-</span></td>
+                          </tr>
+                          <tr>
+                            <td style="background-color: rgba(248, 245, 255, 1);"><span>Card Version</span></td>
+                            <td style="background-color: rgba(248, 245, 255, 1);"><span>:</span></td>
+                            <td class="r_border" style="background-color: rgba(248, 245, 255, 1); border-right: 1px solid rgba(0, 0, 0, 0.42);"><span>1</span></td>
+                          </tr>
+                          <tr>
+                            <td><span>Badge Number</span></td>
+                            <td><span>:</span></td>
+                            <td style="border-right: 1px solid rgba(0, 0, 0, 0.42);" class="r_border"><span>23467657463</span></td>
+                          </tr>
+                          <tr>
+                            <td style="background-color: rgba(248, 245, 255, 1);"><span>Special Access</span></td>
+                            <td style="background-color: rgba(248, 245, 255, 1);"><span>:</span></td>
+                            <td class="r_border" style="background-color: rgba(248, 245, 255, 1); border-right: 1px solid rgba(0, 0, 0, 0.42);"><span>FALSE</span></td>
+                          </tr>
+                          <tr>
+                            <td><span>Memo</span></td>
+                            <td><span>:</span></td>
+                            <td style="border-right: 1px solid rgba(0, 0, 0, 0.42);" class="r_border"><span>LAW</span></td>
+                          </tr>
+                          <tr>
+                            <td style="background-color: rgba(248, 245, 255, 1);"><span>Activation Date</span></td>
+                            <td style="background-color: rgba(248, 245, 255, 1);"><span>:</span></td>
+                            <td class="r_border" style="background-color: rgba(248, 245, 255, 1); border-right: 1px solid rgba(0, 0, 0, 0.42);"><span>20/02/2022</span></td>
+                          </tr>
+                          <tr>
+                            <td style="border-bottom: 1px solid rgba(0, 0, 0, 0.42);"><span>Expire Date</span></td>
+                            <td style="border-bottom: 1px solid rgba(0, 0, 0, 0.42);"><span>:</span></td>
+                            <td style="border-right: 1px solid rgba(0, 0, 0, 0.42); border-bottom: 1px solid rgba(0, 0, 0, 0.42);" class="r_border"><span>05/05/2025 11:59:59 PM</span></td>
+                          </tr>
+           
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-12">
+                    <table class="table">
+                        <thead>
+                          <tr >
+                            <th>ID</th>
+                            <th>Card Access Group Name</th>
+                            <th style="border-right: 1px solid rgba(0, 0, 0, 0.42);" class="r_border">Time Zone</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><span>1</span></td>
+                            <td><span>Default</span></td>
+                            <td style="border-right: 1px solid rgba(0, 0, 0, 0.42);" class="r_border"><span>Timezone A</span></td>
+                          </tr>
+                          <tr>
+                            <td style="background-color: rgba(248, 245, 255, 1);"><span>2</span></td>
+                            <td style="background-color: rgba(248, 245, 255, 1);"><span>Access Group A</span></td>
+                            <td class="r_border" style="background-color: rgba(248, 245, 255, 1);border-right: 1px solid rgba(0, 0, 0, 0.42);"><span>Timezone B</span></td>
+                          </tr>
+                          <tr>
+                            <td><span>3</span></td>
+                            <td><span>Access Group B</span></td>
+                            <td style="border-right: 1px solid rgba(0, 0, 0, 0.42);" class="r_border"><span>Timezone C</span></td>
+                          </tr>
+                          <tr>
+                            <td style="background-color: rgba(248, 245, 255, 1); border-bottom: 1px solid rgba(0, 0, 0, 0.42);"><span>4</span></td>
+                            <td style="background-color: rgba(248, 245, 255, 1); border-bottom: 1px solid rgba(0, 0, 0, 0.42);"><span>Access Group C</span></td>
+                            <td class="r_border" style="background-color: rgba(248, 245, 255, 1); border-bottom: 1px solid rgba(0, 0, 0, 0.42); border-right: 1px solid rgba(0, 0, 0, 0.42);"><span>Default</span></td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="mt-2 cu_btn">
+                <button class="btn btn-primary search_btn" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary search_btn">Update</button>
+            </div>
+            
+           
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+    
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
